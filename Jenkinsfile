@@ -21,6 +21,11 @@ pipeline {
         junit(allowEmptyResults: true, testResults: 'Automation')
       }
     }
+    stage('Deploy') {
+      steps {
+        echo 'All Done!'
+      }
+    }
   }
   environment {
     start_date = '20170513'
