@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Echo') {
+    stage('Start') {
       steps {
         echo 'Hello Jenkins Pipeline'
       }
@@ -24,6 +24,11 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'All Done!'
+      }
+    }
+    stage('End') {
+      steps {
+        pwd()
       }
     }
   }
