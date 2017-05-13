@@ -16,6 +16,11 @@ pipeline {
         sh 'echo "Hello Jenkins!"'
       }
     }
+    stage('Test') {
+      steps {
+        junit(allowEmptyResults: true, testResults: 'Automation')
+      }
+    }
   }
   environment {
     start_date = '20170513'
