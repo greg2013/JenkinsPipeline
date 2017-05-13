@@ -18,12 +18,34 @@ pipeline {
     }
     stage('Test') {
       steps {
-        junit(allowEmptyResults: true, testResults: 'Automation')
+        parallel(
+          "Test": {
+            junit(allowEmptyResults: true, testResults: 'Automation')
+            
+          },
+          "Automation": {
+            echo 'Automated tests passed!'
+            
+          },
+          "Acceptance": {
+            echo 'Acceptance tests passed!'
+            
+          }
+        )
       }
     }
     stage('Deploy') {
       steps {
-        echo 'All Done!'
+        parallel(
+          "Deploy": {
+            echo 'All Done!'
+            
+          },
+          "Smoking Test": {
+            echo 'Signed'
+            
+          }
+        )
       }
     }
     stage('End') {
