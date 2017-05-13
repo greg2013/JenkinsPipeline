@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('error') {
+    stage('Echo') {
       steps {
         echo 'Hello Jenkins Pipeline'
       }
