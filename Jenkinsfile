@@ -11,6 +11,11 @@ pipeline {
         git 'https://github.com/greg2013/spring-boot.git'
       }
     }
+    stage('Build') {
+      steps {
+        sh 'echo "Hello Jenkins!"'
+      }
+    }
   }
   environment {
     start_date = '20170513'
