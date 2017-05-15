@@ -1,5 +1,11 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'maven:3.5-jdk-8-alpine'
+      args '-v /Volumes/Home/Users/gyzheng/.m2:/root/.m2'
+    }
+    
+  }
   stages {
     stage('Start') {
       steps {
@@ -13,7 +19,10 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'echo "Hello Jenkins!"'
+        sh '''echo "Hello Jenkins!"
+echo PATH = ${PATH}
+echo M2_HOME = ${M2_HOME}
+mvn -version'''
       }
     }
     stage('Test') {
